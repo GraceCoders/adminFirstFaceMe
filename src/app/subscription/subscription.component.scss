@@ -1,0 +1,18 @@
+.btn-primary {
+    background-color:#56a9ff;
+    color: white;
+}
+
+.text-primary, a.text-primary:focus, a.text-primary:hover {
+    color: #56a9ff !important;
+}
+
+button, input, select, textarea, optgroup {
+    font: inherit;
+    margin: 0;
+    width: 360px;
+}
+.eventCategories .table-responsive {
+    overflow: hidden;
+    padding-bottom: 0;
+}

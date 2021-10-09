@@ -1,0 +1,149 @@
+<div id="top"></div>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header headerFlex">
+          <h4 class="card-title">Interests List</h4>
+          <span class="addNewBtn">
+            <a href="javascript:;" onclick="document.getElementById('id02').style.display='block'" (click)="empty()"
+              class="btn btn-primary"><i class="fa fa-plus"></i> Add new</a>
+          </span>
+        </div>
+
+        <div *ngIf="!interests.length">
+          No plan found
+        </div>
+        <div class="eventCategories">
+          <div class="card-body" *ngIf="interests.length">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>Sr No</th>
+                  <th>Name</th>
+                  <th>Created At</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let interest of interests; let i= index;">
+                    <td>{{ i + 1}}</td>
+                    <td>{{interest.name}}</td>
+
+                    <td>{{interest.createdAt | date: "medium"}}</td>
+                    <td>
+                      <i class="fa fa-edit" aria-hidden="true"
+                        onclick="document.getElementById('id01').style.display='block'"
+                        (click)="editsubcription(interest._id)"></i> &nbsp;
+                      <i class="fa fa-trash" aria-hidden="true" (click)="deletesubscription(interest._id,i)"></i> &nbsp;
+
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <div class="w3-container">
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container addTicketPackage">
+              <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Interest </h4>
+              </div>
+              <div *ngIf="messageError">
+                <p style="color: red">{{msg}}</p>
+              </div>
+              <form id="myform">
+
+                <div>
+                  <label>Name</label>
+                  <input type="text" name="subscription" id="subscription" [(ngModel)]="data.subscription_name"
+                    #subscription placeholder="Enter subscription name" width="100%"><br>
+                </div>
+                <br>
+                <div>
+                </div>
+              </form>
+              <div class="modal-footer">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                  class="btn btn-secondry">Close</button>
+                <button type="button" (click)="updatesubscription(subscription,price,priceid,productid)"
+                  class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <div class="w3-container">
+        <div id="id02" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container addTicketPackage">
+              <span onclick="document.getElementById('id02').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+              <div class="modal-header">
+                <h4 class="modal-title">Add Interest </h4>
+              </div>
+              <div *ngIf="messageError">
+                <p style="color: red">{{msg}}</p>
+              </div>
+              <form id="myform">
+                <div>
+                  <label>Name</label>
+                  <input type="text" name="subscription" id="subscription" #subscription placeholder="Enter plan name"
+                    width="100%"><br>
+                </div>
+                <br>
+                <br>
+                <div>
+                </div>
+              </form>
+              <div class="modal-footer">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                  class="btn btn-secondry">Close</button>
+                <button type="button" (click)="addsubscription(subscription,price,priceid,productid)"
+                  class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+      <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+        <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner>
+    </div>
+
+    <style>
+      .w3-modal-content {
+        margin: auto;
+        background-color: #fff;
+        position: relative;
+        padding: 0;
+        outline: 0;
+        width: 400px;
+      }
+
+      .subCat {
+        width: 350px;
+      }
+    </style>
+  </div>
+</div>
